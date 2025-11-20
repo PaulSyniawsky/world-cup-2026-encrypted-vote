@@ -1,19 +1,43 @@
-# FHEVM React Template
+# ⚽ FHE World Cup 2026 Voting
 
-A minimal React frontend template for building FHEVM-enabled decentralized applications (dApps). This template provides a simple development interface for interacting with FHEVM smart contracts, specifically the `FHECounter.sol` contract.
+A **privacy-preserving decentralized application (dApp)** for making **encrypted predictions** on the winner of the 2026 FIFA World Cup. All user selections are **fully encrypted using FHEVM**, ensuring nobody—including the contract—can see your choices in plaintext.  
 
-## 🚀 What is FHEVM?
+---
 
-FHEVM (Fully Homomorphic Encryption Virtual Machine) enables computation on encrypted data directly on Ethereum. This template demonstrates how to build dApps that can perform computations while keeping data private.
+## 📝 Features
 
-## ✨ Features
+- 🔒 **Encrypted Predictions** – Users submit predictions fully encrypted; only they can decrypt their selections.  
+- 🏆 **Tournament Journey** – Track your predicted journey from Round of 16 to the Final.  
+- 🌐 **Web3 Wallet Integration** – Connect using Ethereum-compatible wallets via **RainbowKit + Wagmi**.  
+- 🎛 **Interactive UI** – Select winners for each match with an intuitive interface.  
+- ⏱ **Match Schedule** – See the scheduled match times for each round.  
+- 💾 **Persisted Votes** – Once submitted, predictions are stored on-chain encrypted.  
 
-- **🔐 FHEVM Integration**: Built-in support for fully homomorphic encryption
-- **⚛️ React + Next.js**: Modern, performant frontend framework
-- **🎨 Tailwind CSS**: Utility-first styling for rapid UI development
-- **🔗 RainbowKit**: Seamless wallet connection and management
-- **🌐 Multi-Network Support**: Works on both Sepolia testnet and local Hardhat node
-- **📦 Monorepo Structure**: Organized packages for SDK, contracts, and frontend
+---
+
+## 📌 How it Works
+
+1. Connect your wallet using the **RainbowKit Connect Button**.  
+2. Navigate through each round of the World Cup:  
+   - Round of 16 → Quarter-Finals → Semi-Finals → Final.  
+3. Click on your predicted winner for each match.  
+4. After selecting winners for the round, click **Next Round**.  
+5. Once you reach the Final, submit your **Champion prediction**.  
+6. Your journey is stored **encrypted** on-chain. Only you can decrypt it later.  
+
+---
+
+## 🏗 Tech Stack
+
+- **React + TypeScript** – Frontend framework  
+- **Tailwind CSS** – Styling  
+- **Framer Motion** – Animations  
+- **FHEVM SDK** – Fully Homomorphic Encryption for Ethereum  
+- **RainbowKit + Wagmi** – Wallet connection  
+- **ClipLoader** – Loading indicators  
+- **React Icons** – UI icons  
+
+---
 
 ## 📋 Prerequinextjss
 
@@ -31,7 +55,7 @@ Before you begin, ensure you have:
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd fhevm-react-template
+cd world-cup-2026-encrypted-vote
 
 # Initialize submodules (includes fhevm-hardhat-template)
 git submodule update --init --recursive
@@ -124,7 +148,7 @@ For more details, see the [MetaMask development guide](https://docs.metamask.io/
 This template uses a monorepo structure with three main packages:
 
 ```
-fhevm-react-template/
+world-cup-2026-encrypted-vote/
 ├── packages/
 │   ├── fhevm-hardhat-template/    # Smart contracts & deployment
 │   ├── fhevm-sdk/                 # FHEVM SDK package
@@ -134,8 +158,8 @@ fhevm-react-template/
 
 ### Key Components
 
-#### 🔗 FHEVM Integration (`packages/nextjs/hooks/fhecounter-example/`)
-- **`useFHECounterWagmi.tsx`**: Example hook demonstrating FHEVM contract interaction
+#### 🔗 FHEVM Integration (`packages/nextjs/hooks`)
+- **`useFHEWorldCupHook.tsx`**: Example hook demonstrating FHEVM contract interaction
 - Essential hooks for FHEVM-enabled smart contract communication
 - Easily copyable to any FHEVM + React project
 

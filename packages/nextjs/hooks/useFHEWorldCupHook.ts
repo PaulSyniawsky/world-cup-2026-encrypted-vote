@@ -97,7 +97,6 @@ export const useFHEWorldCupHook = (props: {
   }, [voteHandle, results]);
 
   const decrypted = useMemo(() => {
-    console.log(results)
     if (!voteHandle) return false;
     const val = results?.[voteHandle];
     return typeof val !== "undefined" && BigInt(val) !== BigInt(0);
