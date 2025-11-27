@@ -24,9 +24,9 @@ export interface FHEWorldCupVoteInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "canSubmit"
+      | "confidentialProtocolId"
       | "grantSelfAccessAgain"
       | "isRegistered"
-      | "protocolId"
       | "readEncryptedGuess"
       | "recordEncryptedGuess"
   ): FunctionFragment;
@@ -36,16 +36,16 @@ export interface FHEWorldCupVoteInterface extends Interface {
     values: [AddressLike]
   ): string;
   encodeFunctionData(
+    functionFragment: "confidentialProtocolId",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "grantSelfAccessAgain",
     values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "isRegistered",
     values: [AddressLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "protocolId",
-    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "readEncryptedGuess",
@@ -58,6 +58,10 @@ export interface FHEWorldCupVoteInterface extends Interface {
 
   decodeFunctionResult(functionFragment: "canSubmit", data: BytesLike): Result;
   decodeFunctionResult(
+    functionFragment: "confidentialProtocolId",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "grantSelfAccessAgain",
     data: BytesLike
   ): Result;
@@ -65,7 +69,6 @@ export interface FHEWorldCupVoteInterface extends Interface {
     functionFragment: "isRegistered",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "protocolId", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "readEncryptedGuess",
     data: BytesLike
@@ -121,11 +124,11 @@ export interface FHEWorldCupVote extends BaseContract {
 
   canSubmit: TypedContractMethod<[wallet: AddressLike], [boolean], "view">;
 
+  confidentialProtocolId: TypedContractMethod<[], [bigint], "view">;
+
   grantSelfAccessAgain: TypedContractMethod<[], [void], "nonpayable">;
 
   isRegistered: TypedContractMethod<[wallet: AddressLike], [boolean], "view">;
-
-  protocolId: TypedContractMethod<[], [bigint], "view">;
 
   readEncryptedGuess: TypedContractMethod<
     [wallet: AddressLike],
@@ -147,14 +150,14 @@ export interface FHEWorldCupVote extends BaseContract {
     nameOrSignature: "canSubmit"
   ): TypedContractMethod<[wallet: AddressLike], [boolean], "view">;
   getFunction(
+    nameOrSignature: "confidentialProtocolId"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
     nameOrSignature: "grantSelfAccessAgain"
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "isRegistered"
   ): TypedContractMethod<[wallet: AddressLike], [boolean], "view">;
-  getFunction(
-    nameOrSignature: "protocolId"
-  ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
     nameOrSignature: "readEncryptedGuess"
   ): TypedContractMethod<[wallet: AddressLike], [string], "view">;

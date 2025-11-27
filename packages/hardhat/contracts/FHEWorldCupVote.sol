@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {FHE, euint32, externalEuint32} from "@fhevm/solidity/lib/FHE.sol";
-import {SepoliaConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
+import {ZamaEthereumConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
 
 /**
  * @title FHEWorldCupVote
@@ -10,7 +10,7 @@ import {SepoliaConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
  *      The contract never sees plaintext; each participant provides exactly one
  *      encrypted team ID unless they manually reset their selection.
  */
-contract FHEWorldCupVote is SepoliaConfig {
+contract FHEWorldCupVote is ZamaEthereumConfig {
     // Internal encrypted predictions
     mapping(address => euint32) private _sealedTeamSelection;
 
